@@ -1,0 +1,34 @@
+@model TodoViewModel  //le dice a Razor a qué modelo espera que se vincule esta vista
+@using Humanizer 
+
+@{
+    ViewData["Title"] = "Manage your todo list";
+}
+
+<div class="card mt-3 todo-panel">
+    <div class="card-header">@ViewData["Title"]</div>
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <td>&#x2714;</td>
+                    <td>Item</td>
+                    <td>Due</td>
+                </tr>
+            </thead>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" class="done-checkbox">
+                    </td>
+                    <td>@item.Title</td>
+                    <td>@item.DueAt.Humanize()</td>
+                </tr>
+            }
+        </table>
+    </div> 
+    <div class="card-footer add-item-form">
+        @await Html.PartialAsync("AddItemPartial", new TodoItem())
+    </div>
+</div> 
