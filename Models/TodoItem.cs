@@ -19,5 +19,7 @@ predeterminada, sera falso para todos los nuevos elementos. */
         public string Title { get; set; }
 
         public DateTimeOffset? DueAt { get; set; }
+
+        public string? UserId { get; set; }
     }
 }
